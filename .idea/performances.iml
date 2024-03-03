@@ -5,6 +5,9 @@
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
       <excludeFolder url="file://$MODULE_DIR$/temp" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/complex-app/lirx-dom/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/file-to-data-url/lirx-dom/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/signals/lirx-core/dist" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
