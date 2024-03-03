@@ -1,0 +1,25 @@
+{
+  "name": "@lirx/performances--signals--lirx-core",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "predev": "npm run clear:cache",
+    "prebuild": "npm run clear:cache",
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "clear:cache": "npm run clear:cache:vite",
+    "clear:cache:vite": "node ./tools/clear-cache.js --vite",
+    "reinstall": "rm -rf ./node_modules && rm -f ./yarn.lock && yarn install"
+  },
+  "sideEffects": false,
+  "devDependencies": {
+    "sass": "^1.70.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.1.2"
+  },
+  "dependencies": {
+    "@lirx/core": "latest",
+    "tslib": "^2.6.2"
+  }
+}

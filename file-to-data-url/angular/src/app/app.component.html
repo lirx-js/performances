@@ -1,0 +1,22 @@
+<div
+  class="area"
+  (dragover)="onDragOver($event)"
+  (dragleave)="onDragLeave($event)"
+  (drop)="onDrop($event)"
+  [class.drag-over]="dragOver()"
+>
+  <div class="actions">
+
+  </div>
+
+  @if (base64Url()) {
+    <div class="result">
+      {{ base64Url() }}
+    </div>
+  } @else {
+    <div class="placeholder">
+      Drop a file
+    </div>
+  }
+</div>
+

@@ -1,0 +1,28 @@
+{
+  "name": "@lirx/performances--file-to-data-url--lirx-dom",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "predev": "npm run clear:cache",
+    "prebuild": "npm run clear:cache",
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "clear:cache": "npm run clear:cache:vite && npm run clear:cache:lirx-dom",
+    "clear:cache:vite": "node ./tools/clear-cache.js --vite",
+    "clear:cache:lirx-dom": "node ./tools/clear-cache.js --lirx-dom",
+    "reinstall": "rm -rf ./node_modules && rm -f ./yarn.lock && yarn install"
+  },
+  "sideEffects": false,
+  "devDependencies": {
+    "@lirx/dom-aot-plugin": "latest",
+    "sass": "^1.70.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.1.2"
+  },
+  "dependencies": {
+    "@lirx/core": "latest",
+    "@lirx/dom": "latest",
+    "tslib": "^2.6.2"
+  }
+}

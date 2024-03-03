@@ -1,0 +1,59 @@
+import { computed, effect, IReadonlySignal, ISignal, signal } from '@lirx/core';
+
+function run(): void {
+  const originSignal = signal(1);
+
+  const sumSignals = (signals: readonly IReadonlySignal<number>[]): IReadonlySignal<number> => {
+    return computed((): number => {
+      return signals.reduce((sum: number, signal: IReadonlySignal<number>) => {
+        return sum + signal();
+      }, 0);
+    })
+  };
+
+  const recursive = (count: number): IReadonlySignal<number> => {
+    if (count <= 0) {
+      return originSignal;
+    } else {
+      return sumSignals(Array.from({ length: count }, () => recursive(count - 1)));
+    }
+  };
+
+  console.time('generate');
+  const count = recursive(8);
+  console.timeEnd('generate');
+
+  console.time('read-1');
+  let value: number = count();
+  console.timeEnd('read-1');
+  console.log(value);
+
+  console.time('read-1-cached');
+  value = count();
+  console.timeEnd('read-1-cached');
+  console.log(value);
+
+  console.time('update');
+  originSignal.set(2);
+  console.timeEnd('update');
+
+  console.time('read-2');
+  value = count();
+  console.timeEnd('read-2');
+  console.log(value);
+
+  console.time('effect');
+  effect(() => {
+    if (count() === 0) {
+      console.timeEnd('effect');
+    }
+  });
+  originSignal.set(0);
+}
+
+function main(): void {
+  setTimeout(run, 500);
+}
+
+window.onload = main;
+

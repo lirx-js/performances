@@ -1,0 +1,20 @@
+import { Component, ChangeDetectionStrategy, inject, ChangeDetectorRef } from '@angular/core';
+
+@Component({
+  selector: 'app-4675083556562399',
+  standalone: true,
+  templateUrl: './app-4675083556562399.component.html',
+  styleUrl: './app-4675083556562399.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class App4675083556562399Component {
+  date: string = '';
+
+  constructor() {
+    const changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
+    setInterval(() => {
+      this.date = new Date().toString();
+      changeDetectorRef.markForCheck();
+    }, 1000);
+  }
+}
